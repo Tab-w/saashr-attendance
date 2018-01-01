@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/index")
 public class IndexController {
-    @Value("${testStr}")
-    private String testStr;
 
     @RequestMapping
     public String index() {
@@ -24,6 +22,6 @@ public class IndexController {
         logger.info("info");
         logger.debug("debug");
         logger.trace("trace");
-        return "testStr=" + testStr;
+        return "index";
     }
 }

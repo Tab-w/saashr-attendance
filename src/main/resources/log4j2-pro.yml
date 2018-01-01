@@ -20,7 +20,7 @@ Configuration:
       name: CONSOLE
       target: SYSTEM_OUT
       ThresholdFilter:
-        level: INFO
+        level: TRACE
         onMatch: ACCEPT
         onMismatch: DENY
       PatternLayout:
@@ -60,7 +60,7 @@ Configuration:
           max: 1000
   Loggers:
     Root:
-      level: DEBUG
+      level: INFO
       AppenderRef:
         - ref: CONSOLE
         - ref: ROLLING_FILE

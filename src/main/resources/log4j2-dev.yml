@@ -20,19 +20,19 @@ Configuration:
       name: CONSOLE
       target: SYSTEM_OUT
       ThresholdFilter:
-        level: INFO
+        level: TRACE
         onMatch: ACCEPT
         onMismatch: DENY
       PatternLayout:
         pattern: ${LOG_PATTERN}
   Loggers:
     Root:
-      level: DEBUG
+      level: INFO
       AppenderRef:
         - ref: CONSOLE
     Logger:
       - name: com.fesco.saashr.dao #为com.fesco.saashr.dao包配置特殊的Log级别,方便调试
-        additivity: FALSE
+        additivity: FALSE #不在父类的输出源中输出
         level: DEBUG
         AppenderRef:
           - ref: CONSOLE
