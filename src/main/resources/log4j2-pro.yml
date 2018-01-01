@@ -1,0 +1,74 @@
+Configuration:
+  status: WARN #用于设置log4j2自身内部的信息输出,可以不设置,当设置成trace时,可以看到log4j2内部各种详细输出
+  monitorInterval: 3600 #自动刷新该配置文件的时间间隔(秒)
+  Properties: #自定义配置
+    Property:
+      - name: LOG_PATTERN
+        value: "%d{yyyy-MM-dd HH:mm:ss.SSS} |-%-5level [%thread] %c [%L] -| %msg%n"
+      - name: FILE_PATTERN
+        value: "${LOG_PATH}/$${date:yyyy-MM}/${PROJECT_NAME}-%d{yyyy-MM-dd}-%i.log.gz"
+      - name: ERROR_FILE_PATTERN
+        value: "${LOG_PATH}/$${date:yyyy-MM}/${PROJECT_NAME}-error-%d{yyyy-MM-dd}-%i.log.gz"
+      - name: FILE_SIZE
+        value: "10kb"
+      - name: LOG_PATH
+        value: "/logs"
+      - name: PROJECT_NAME
+        value: "saashr-attendance"
+  Appenders:
+    Console:  #输出到控制台
+      name: CONSOLE
+      target: SYSTEM_OUT
+      ThresholdFilter:
+        level: INFO
+        onMatch: ACCEPT
+        onMismatch: DENY
+      PatternLayout:
+        pattern: ${LOG_PATTERN}
+    RollingFile:
+      - name: ROLLING_FILE #输出debug以上日志到文件,超过128MB就压缩
+        fileName: ${LOG_PATH}/${PROJECT_NAME}.log
+        filePattern: ${FILE_PATTERN}
+        Filters:
+          ThresholdFilter:
+            - level: ERROR
+              onMatch: DENY
+              onMismatch: NEUTRAL
+            - level: DEBUG
+              onMatch: ACCEPT
+              onMismatch: DENY
+        PatternLayout:
+          pattern: ${LOG_PATTERN}
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: ${FILE_SIZE}
+        DefaultRolloverStrategy:
+          max: 1000
+      - name: ROLLING_FILE_ERROR #输出error日志到文件,超过128MB就压缩
+        fileName: ${LOG_PATH}/${PROJECT_NAME}-error.log
+        filePattern: ${ERROR_FILE_PATTERN}
+        ThresholdFilter:
+          level: ERROR
+          onMatch: ACCEPT
+          onMismatch: DENY
+        PatternLayout:
+          pattern: ${LOG_PATTERN}
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: ${FILE_SIZE}
+        DefaultRolloverStrategy:
+          max: 1000
+  Loggers:
+    Root:
+      level: DEBUG
+      AppenderRef:
+        - ref: CONSOLE
+        - ref: ROLLING_FILE
+        - ref: ROLLING_FILE_ERROR
+    Logger:
+      - name: com.fesco.saashr.dao #为com.fesco.saashr.dao包配置特殊的Log级别,方便调试
+        additivity: FALSE
+        level: DEBUG
+        AppenderRef:
+          - ref: CONSOLE
+          - ref: ROLLING_FILE
