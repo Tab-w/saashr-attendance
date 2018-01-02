@@ -17,6 +17,7 @@ import java.util.Properties;
 @Configuration
 @EnableConfigurationProperties(DruidSettings.class)
 public class DruidDataSourceConfig {
+
     @Autowired
     private DruidSettings druidSettings;
 

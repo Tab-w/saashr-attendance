@@ -191,4 +191,3 @@ public class DruidSettings {
         this.useGlobalDataSourceStat = useGlobalDataSourceStat;
     }
 }
-
