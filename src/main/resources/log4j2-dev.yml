@@ -31,7 +31,7 @@ Configuration:
       AppenderRef:
         - ref: CONSOLE
     Logger:
-      - name: com.fesco.saashr.dao #为com.fesco.saashr.dao包配置特殊的Log级别,方便调试
+      - name: com.fesco.saashr.web.dao #为com.fesco.saashr.web.dao包配置特殊的Log级别,方便调试
         additivity: FALSE #不在父类的输出源中输出
         level: DEBUG
         AppenderRef:

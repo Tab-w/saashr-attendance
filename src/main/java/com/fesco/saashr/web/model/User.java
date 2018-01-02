@@ -1,4 +1,4 @@
-package com.fesco.saashr.model;
+package com.fesco.saashr.web.model;
 
 /**
  * @author WangXingYu

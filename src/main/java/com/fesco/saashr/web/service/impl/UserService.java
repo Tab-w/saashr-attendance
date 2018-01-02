@@ -1,8 +1,8 @@
-package com.fesco.saashr.service.impl;
+package com.fesco.saashr.web.service.impl;
 
-import com.fesco.saashr.dao.UserMapper;
-import com.fesco.saashr.model.User;
-import com.fesco.saashr.service.BaseService;
+import com.fesco.saashr.web.dao.UserMapper;
+import com.fesco.saashr.web.model.User;
+import com.fesco.saashr.web.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

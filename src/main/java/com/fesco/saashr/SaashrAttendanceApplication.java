@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @date 2018-01-01
  */
 @SpringBootApplication
-@MapperScan("com.fesco.saashr.dao")
+@MapperScan("com.fesco.saashr.web.dao")
 @EnableTransactionManagement
 @ServletComponentScan
 @EnableSwagger2

@@ -1,4 +1,4 @@
-package com.fesco.saashr.service;
+package com.fesco.saashr.web.service;
 
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

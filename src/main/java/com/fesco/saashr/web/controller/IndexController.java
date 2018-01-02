@@ -1,4 +1,4 @@
-package com.fesco.saashr.controller;
+package com.fesco.saashr.web.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

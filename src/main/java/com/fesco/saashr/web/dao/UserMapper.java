@@ -1,7 +1,7 @@
-package com.fesco.saashr.dao;
+package com.fesco.saashr.web.dao;
 
 
-import com.fesco.saashr.model.User;
+import com.fesco.saashr.web.model.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;

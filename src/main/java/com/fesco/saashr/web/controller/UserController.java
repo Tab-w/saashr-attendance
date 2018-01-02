@@ -1,7 +1,7 @@
-package com.fesco.saashr.controller;
+package com.fesco.saashr.web.controller;
 
-import com.fesco.saashr.model.User;
-import com.fesco.saashr.service.impl.UserService;
+import com.fesco.saashr.web.model.User;
+import com.fesco.saashr.web.service.impl.UserService;
 import com.github.pagehelper.PageHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
