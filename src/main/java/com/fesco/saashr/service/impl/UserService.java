@@ -5,6 +5,7 @@ import com.fesco.saashr.model.User;
 import com.fesco.saashr.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @date 2018-01-02
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class UserService implements BaseService<User> {
     @Autowired
     private UserMapper mapper;
