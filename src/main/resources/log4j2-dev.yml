@@ -10,7 +10,7 @@ Configuration:
       - name: ERROR_FILE_PATTERN
         value: "${LOG_PATH}/$${date:yyyy-MM}/${PROJECT_NAME}-error-%d{yyyy-MM-dd}-%i.log.gz"
       - name: FILE_SIZE
-        value: "10kb"
+        value: "128MB"
       - name: LOG_PATH
         value: "/logs"
       - name: PROJECT_NAME

@@ -10,7 +10,7 @@ Configuration:
       - name: ERROR_FILE_PATTERN
         value: "${LOG_PATH}/$${date:yyyy-MM}/${PROJECT_NAME}-error-%d{yyyy-MM-dd}-%i.log.gz"
       - name: FILE_SIZE
-        value: "10kb"
+        value: "128MB"
       - name: LOG_PATH
         value: "/logs"
       - name: PROJECT_NAME
@@ -26,7 +26,7 @@ Configuration:
       PatternLayout:
         pattern: ${LOG_PATTERN}
     RollingFile:
-      - name: ROLLING_FILE #输出debug以上日志到文件,超过128MB就压缩
+      - name: ROLLING_FILE #输出debug以上日志到文件,超过${FILE_SIZE}就压缩
         fileName: ${LOG_PATH}/${PROJECT_NAME}.log
         filePattern: ${FILE_PATTERN}
         Filters:
@@ -44,7 +44,7 @@ Configuration:
             size: ${FILE_SIZE}
         DefaultRolloverStrategy:
           max: 1000
-      - name: ROLLING_FILE_ERROR #输出error日志到文件,超过128MB就压缩
+      - name: ROLLING_FILE_ERROR #输出error日志到文件,超过${FILE_SIZE}就压缩
         fileName: ${LOG_PATH}/${PROJECT_NAME}-error.log
         filePattern: ${ERROR_FILE_PATTERN}
         ThresholdFilter:
