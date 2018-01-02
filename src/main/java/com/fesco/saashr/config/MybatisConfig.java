@@ -25,14 +25,13 @@ import java.util.Properties;
  */
 @Configuration
 @AutoConfigureAfter(DruidDataSourceConfig.class)
-@ConfigurationProperties
+@ConfigurationProperties(prefix = "mybatis")
 @EnableTransactionManagement
 public class MybatisConfig {
     @Configuration
     public class MybatisConf {
         @Bean
         public PageHelper pageHelper() {
-            System.out.println("MyBatisConfiguration.pageHelper()");
             PageHelper pageHelper = new PageHelper();
             Properties p = new Properties();
             p.setProperty("offsetAsPageNum", "true");

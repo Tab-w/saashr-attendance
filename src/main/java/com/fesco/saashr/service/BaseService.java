@@ -7,7 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by WangXingYu on 2017-12-31.
+ * @author WangXingYu
+ * @date 2018-01-01
  */
 public interface BaseService<T> {
     int insert(T entity);

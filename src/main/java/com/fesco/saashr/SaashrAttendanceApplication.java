@@ -6,10 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
+/**
+ * @author WangXingYu
+ * @date 2018-01-01
+ */
 @SpringBootApplication
-@ServletComponentScan
+@MapperScan("com.fesco.saashr.dao")
 @EnableTransactionManagement
-@MapperScan("microservice.qssj.mapper")
+@ServletComponentScan
 public class SaashrAttendanceApplication {
 
     public static void main(String[] args) {

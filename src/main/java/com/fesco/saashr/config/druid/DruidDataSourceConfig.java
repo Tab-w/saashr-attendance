@@ -44,7 +44,8 @@ public class DruidDataSourceConfig {
         if (druidSettings.isPoolPreparedStatements()) {
             dataSource.setMaxPoolPreparedStatementPerConnectionSize(druidSettings.getMaxPoolPreparedStatementPerConnectionSize());
         }
-        dataSource.setFilters(druidSettings.getFilters());//这是最关键的,否则SQL监控无法生效
+        //设置SQL监控
+        dataSource.setFilters(druidSettings.getFilters());
         String connectionPropertiesStr = druidSettings.getConnectionProperties();
         if (connectionPropertiesStr != null && !"".equals(connectionPropertiesStr)) {
             Properties connectProperties = new Properties();
