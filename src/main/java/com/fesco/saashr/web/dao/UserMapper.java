@@ -1,30 +1,17 @@
 package com.fesco.saashr.web.dao;
 
-
 import com.fesco.saashr.web.model.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
-import java.util.List;
-
-/**
- * @author WangXingYu
- * @date 2018-01-02
- */
 public interface UserMapper {
+    int deleteByPrimaryKey(Integer id);
 
-    int insert(User user);
+    int insert(User record);
 
-    @Delete("DELETE FROM sec_user WHERE id = #{id}")
-    int deleteById(int id);
+    int insertSelective(User record);
 
-    @Update("UPDATE sec_user SET username = #{username}, password = #{password}, person_id = #{person_id} WHERE id = #{id}")
-    int update(User user);
+    User selectByPrimaryKey(Integer id);
 
-    @Select("SELECT id, username, password, person_id FROM sec_user WHERE id = #{id}")
-    User findById(int id);
+    int updateByPrimaryKeySelective(User record);
 
-    @Select("SELECT id, username, password, person_id FROM sec_user")
-    List<User> findAll();
+    int updateByPrimaryKey(User record);
 }

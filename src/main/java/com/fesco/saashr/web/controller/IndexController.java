@@ -1,7 +1,9 @@
 package com.fesco.saashr.web.controller;
 
+import com.fesco.saashr.web.util.RedisComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/index")
 public class IndexController {
+    @Autowired
+    private RedisComponent redisComponet;
 
     @RequestMapping
     public String index() {
@@ -22,6 +26,7 @@ public class IndexController {
         logger.info("info");
         logger.debug("debug");
         logger.trace("trace");
+        redisComponet.set("testKey", "testValue");
         return "index";
     }
 }

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 /**
  * @author WangXingYu
  * @date 2018-01-02
@@ -20,27 +18,32 @@ public class UserService implements BaseService<User> {
     private UserMapper mapper;
 
     @Override
-    public int insert(User entity) {
-        return mapper.insert(entity) > 0 ? entity.getId() : -1;
+    public int deleteByPrimaryKey(Integer id) {
+        return mapper.deleteByPrimaryKey(id);
     }
 
     @Override
-    public int deleteById(int id) {
-        return mapper.deleteById(id);
+    public int insert(User record) {
+        return mapper.insert(record);
     }
 
     @Override
-    public int update(User entity) {
-        return mapper.update(entity);
+    public int insertSelective(User record) {
+        return mapper.insertSelective(record);
     }
 
     @Override
-    public User findById(int id) {
-        return mapper.findById(id);
+    public User selectByPrimaryKey(Integer id) {
+        return mapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public List<User> findAll() {
-        return mapper.findAll();
+    public int updateByPrimaryKeySelective(User record) {
+        return mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public int updateByPrimaryKey(User record) {
+        return mapper.updateByPrimaryKey(record);
     }
 }

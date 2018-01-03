@@ -5,16 +5,6 @@ Configuration:
     Property:
       - name: LOG_PATTERN
         value: "%d{yyyy-MM-dd HH:mm:ss.SSS} |-%-5level [%thread] %c [%L] -| %msg%n"
-      - name: FILE_PATTERN
-        value: "${LOG_PATH}/$${date:yyyy-MM}/${PROJECT_NAME}-%d{yyyy-MM-dd}-%i.log.gz"
-      - name: ERROR_FILE_PATTERN
-        value: "${LOG_PATH}/$${date:yyyy-MM}/${PROJECT_NAME}-error-%d{yyyy-MM-dd}-%i.log.gz"
-      - name: FILE_SIZE
-        value: "128MB"
-      - name: LOG_PATH
-        value: "/logs"
-      - name: PROJECT_NAME
-        value: "saashr-attendance"
   Appenders:
     Console:  #输出到控制台
       name: CONSOLE
