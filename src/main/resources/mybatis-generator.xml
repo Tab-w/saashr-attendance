@@ -2,21 +2,12 @@
 <!DOCTYPE generatorConfiguration
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
-
 <!-- 配置Run As Maven build : Goals 参数 : mybatis-generator:generate -Dmybatis.generator.overwrite=true -->
 <generatorConfiguration>
     <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
         <!-- 生成的model实现Serializable借口 -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
             <property name="suppressJavaInterface" value="false"/>
-        </plugin>
-
-        <!-- 用来生成在XML中的<cache>元素 -->
-        <plugin type="org.mybatis.generator.plugins.CachePlugin">
-            <property name="cache_eviction" value="LRU"/>
-            <property name="cache_flushInterval" value="120000"/>
-            <property name="cache_readOnly" value="false"/>
-            <property name="cache_size" value="1000"/>
         </plugin>
 
         <!-- 该插件给实体类添加toString() -->
@@ -28,9 +19,10 @@
         </commentGenerator>
 
         <!--数据库连接信息 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.0.41.102:3306/saashr_wxy_100?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" userId="admin_wangxy" password="123qweasdzxc">
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.0.41.102:3306/saashr_wxy_100?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" userId="admin_wangxy" password="123qweasdzxc">-->
+        <!--</jdbcConnection>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" userId="root" password="root">
         </jdbcConnection>
-
         <!--生成的model 包路径 -->
         <javaModelGenerator targetPackage="com.fesco.saashr.web.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="ture"/>
@@ -46,12 +38,13 @@
         <!-- type="ANNOTATEDMAPPER",生成基于注解的Mapper接口
                 type="MIXEDMAPPER",生成最小的基于注解的Mapper接口
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fesco.saashr.web.dao" targetProject="src/main/java">
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.fesco.saashr.web.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="ture"/>
             <!-- 生成所有dao的基类 -->
             <!--<property name="rootInterface" value=""/>-->
         </javaClientGenerator>
         <!--对应数据库表名 -->
-        <table tableName="sec_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <!--<table tableName="sec_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>

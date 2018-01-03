@@ -1,12 +1,14 @@
 package com.fesco.saashr.web.controller;
 
-import com.fesco.saashr.web.util.RedisComponent;
+import com.fesco.saashr.config.redis.RedisComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author: WangXingYu
@@ -26,7 +28,9 @@ public class IndexController {
         logger.info("info");
         logger.debug("debug");
         logger.trace("trace");
-        redisComponet.set("testKey", "testValue");
+        Map<String, String> map = new HashMap<>();
+        map.put("abc", "def");
+        redisComponet.setMap("aaa", map, -1);
         return "index";
     }
 }
