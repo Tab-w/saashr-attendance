@@ -23,7 +23,7 @@ public class DruidDataSourceConfig {
 
     @Bean
     @ConfigurationProperties("spring.druid.datasource")
-    public DruidDataSource dataSource(DataSourceProperties properties) throws Exception {
+    public DruidDataSource dataSource() throws Exception {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(druidSettings.getDriverClassName());
         dataSource.setUrl(druidSettings.getUrl());
@@ -45,8 +45,10 @@ public class DruidDataSourceConfig {
         if (druidSettings.isPoolPreparedStatements()) {
             dataSource.setMaxPoolPreparedStatementPerConnectionSize(druidSettings.getMaxPoolPreparedStatementPerConnectionSize());
         }
+
         //设置SQL监控
         dataSource.setFilters(druidSettings.getFilters());
+
         String connectionPropertiesStr = druidSettings.getConnectionProperties();
         if (connectionPropertiesStr != null && !"".equals(connectionPropertiesStr)) {
             Properties connectProperties = new Properties();
