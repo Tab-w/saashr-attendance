@@ -1,7 +1,7 @@
 package com.fesco.saashr.web.controller;
 
 import com.fesco.saashr.web.model.User;
-import com.fesco.saashr.web.service.impl.UserService;
+import com.fesco.saashr.web.service.impl.UserServiceImpl;
 import com.github.pagehelper.PageHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -19,9 +19,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 @Api(value = "User的Controller")
-public class UserController {
+public class UserController extends BaseController {
     @Autowired
-    private UserService service;
+    private UserServiceImpl service;
 
     @ApiOperation(value = "查询单条用户信息", notes = "根据url的id来指定查询用户信息")
     @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "Integer")

@@ -3,6 +3,7 @@ package com.fesco.saashr.web.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -11,16 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/index")
-public class IndexController {
+public class IndexController extends BaseController {
 
     @RequestMapping
     public String index() {
-        Logger logger = LoggerFactory.getLogger(this.getClass());
+        return "index";
+    }
+
+    @RequestMapping("/testLog")
+    public void testLog() {
         logger.error("error");
         logger.warn("warn");
         logger.info("info");
         logger.debug("debug");
         logger.trace("trace");
-        return "index";
     }
 }

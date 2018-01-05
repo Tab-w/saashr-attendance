@@ -17,6 +17,4 @@ public interface BaseService<T> {
     int updateByPrimaryKeySelective(T record);
 
     int updateByPrimaryKey(T record);
-
-
 }
