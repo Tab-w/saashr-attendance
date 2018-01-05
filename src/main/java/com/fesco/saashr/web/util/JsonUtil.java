@@ -8,7 +8,6 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author: WangXingYu
@@ -16,18 +15,18 @@ import java.util.Objects;
  */
 public class JsonUtil {
 
-    private static final SerializeConfig config;
+    private static final SerializeConfig CONFIG;
 
     static {
-        config = new SerializeConfig();
-        config.put(java.util.Date.class, new JSONLibDataFormatSerializer());
-        config.put(java.sql.Date.class, new JSONLibDataFormatSerializer());
+        CONFIG = new SerializeConfig();
+        CONFIG.put(java.util.Date.class, new JSONLibDataFormatSerializer());
+        CONFIG.put(java.sql.Date.class, new JSONLibDataFormatSerializer());
     }
 
     /**
-     * set the default value of the object which the value is null
+     * 设置对空值的处理
      */
-    private static final SerializerFeature[] features = {
+    private static final SerializerFeature[] FEATURES = {
             SerializerFeature.WriteMapNullValue,
             SerializerFeature.WriteNullListAsEmpty,
             SerializerFeature.WriteNullNumberAsZero,
@@ -36,95 +35,86 @@ public class JsonUtil {
     };
 
     /**
-     * list to json
+     * object to json
      *
-     * @param list the list that will transform to json string
-     * @return the json string of list transform
+     * @param object 要转换的Object
+     * @return 转换后的Json
      */
-    public static String list2json(List list) {
-        return JSON.toJSONString(list);
+    public static String object2json(Object object) {
+        return JSON.toJSONString(object, CONFIG, FEATURES);
     }
 
     /**
-     * map to json
+     * json string to object
      *
-     * @param map the map that will transform to json string
-     * @return the json string of map transform
+     * @param json  要转换的Json
+     * @param clazz 转换的对象类型
+     * @return 转换后的对象
      */
-    public static String map2json(Map map) {
-        return JSONObject.toJSONString(map);
+    public static <T> T json2object(String json, Class<T> clazz) {
+        return JSON.parseObject(json, clazz);
     }
 
     /**
      * object array to json
      *
-     * @param objects the object array that will transform to json string
-     * @return the json string of array transform
+     * @param objects 要转换的Object数组
+     * @return 转换后的Json
      */
     public static String array2json(Object[] objects) {
         return JSON.toJSONString(objects);
     }
 
     /**
-     * object to json
-     *
-     * @param object the object that will transform to json string
-     * @return the json string of object
-     */
-    public static String object2json(Object object) {
-        return JSON.toJSONString(object, config, features);
-    }
-
-
-    /**
-     * json to list
-     *
-     * @param json  the json string that will transform to list
-     * @param clazz the class of the list's element
-     * @param <T>   the generic of the class
-     * @return the list that json string transform
-     */
-    public static <T> List<T> json2list(String json, Class<T> clazz) {
-        return JSON.parseArray(json, clazz);
-    }
-
-    /**
-     * json to map
-     *
-     * @param json json string that will transform to map
-     * @return the map fo json string
-     */
-    public static Map json2map(String json) {
-        return JSONObject.parseObject(json);
-    }
-
-
-    /**
      * json string to object array
      *
-     * @param json  the json string will transform to object array
-     * @param clazz the class of the json will transform
-     * @param ts    the real object array
-     * @param <T>   the real object
-     * @param json
-     * @param clazz
-     * @param ts
-     * @param <T>
-     * @return
+     * @param json  要转换的Json
+     * @param clazz 转换的对象类型
+     * @param ts    存放对象的数组
+     * @return 转换后的对象数组
      */
     public static <T> T[] json2array(String json, Class<T> clazz, T[] ts) {
         return JSON.parseArray(json, clazz).toArray(ts);
     }
 
     /**
-     * json string to object
+     * list to json
      *
-     * @param json  the json string that will transform to object
-     * @param clazz the class that json will transform
-     * @param <T>   the object class
-     * @return the object of json string
+     * @param list 要转换的List
+     * @return 转换后的Json
      */
-    public static <T> Object json2object(String json, Class<T> clazz) {
-        return JSON.parseObject(json, clazz);
+    public static String list2json(List list) {
+        return JSON.toJSONString(list);
+    }
+
+    /**
+     * json to list
+     *
+     * @param json  要转换的Json
+     * @param clazz 转换的对象类型
+     * @return 转换后的对象集合
+     */
+    public static <T> List<T> json2list(String json, Class<T> clazz) {
+        return JSON.parseArray(json, clazz);
+    }
+
+    /**
+     * map to json
+     *
+     * @param map 要转换的Map
+     * @return 转换后的Json
+     */
+    public static String map2json(Map map) {
+        return JSONObject.toJSONString(map);
+    }
+
+    /**
+     * json to map
+     *
+     * @param json 要转换的Json
+     * @return 转换后的Map
+     */
+    public static Map json2map(String json) {
+        return JSONObject.parseObject(json);
     }
 }
