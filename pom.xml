@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>saashr-attendance</name>
-    <description>saashr中分离出来的考勤部分</description>
+    <description>saashr考勤部分</description>
 
     <!-- SpringBoot的父POM,用于版本控制 -->
     <parent>
@@ -88,6 +88,11 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring-boot-starter-basic</artifactId>
+        </dependency>
+
         <!--<dependency>-->
         <!--<groupId>org.springframework.session</groupId>-->
         <!--<artifactId>spring-session</artifactId>-->
@@ -148,26 +153,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.31</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.module</groupId>
-            <artifactId>jackson-module-jaxb-annotations</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 

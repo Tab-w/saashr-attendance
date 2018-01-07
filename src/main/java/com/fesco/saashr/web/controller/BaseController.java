@@ -44,7 +44,6 @@ public class BaseController {
     @ExceptionHandler(Exception.class)
     public String exceptionHandler(Exception e) {
         // 异常后的操作。。。。。。
-        logger.error(e.getMessage());
         return "redirect:/500";
     }
 }
