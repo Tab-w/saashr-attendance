@@ -19,10 +19,10 @@
         </commentGenerator>
 
         <!--数据库连接信息 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.0.41.102:3306/saashr_wxy_100?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" userId="admin_wangxy" password="123qweasdzxc">
-        </jdbcConnection>
-        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" userId="root" password="root">-->
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.0.41.102:3306/saashr_wxy_100?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" userId="admin_wangxy" password="123qweasdzxc">-->
         <!--</jdbcConnection>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" userId="root" password="root">
+        </jdbcConnection>
         <!--生成的model 包路径 -->
         <javaModelGenerator targetPackage="com.fesco.saashr.web.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="ture"/>
@@ -44,7 +44,7 @@
             <!--<property name="rootInterface" value=""/>-->
         </javaClientGenerator>
         <!--对应数据库表名 -->
-        <table tableName="sec_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <!--<table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="sec_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>

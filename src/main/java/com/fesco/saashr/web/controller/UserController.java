@@ -38,7 +38,7 @@ public class UserController extends BaseController {
 
 
     @ApiOperation(value = "创建用户信息", notes = "根据User对象创建用户信息")
-    @ApiImplicitParam(name = "user", value = "User实体", required = true, dataType = "User")
+    @ApiImplicitParam(name = "user", value = "User实体", required = false, dataType = "User")
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public int insert(User user) {
         return service.insertSelective(user);
@@ -52,7 +52,7 @@ public class UserController extends BaseController {
     }
 
     @ApiOperation(value = "更新用户信息", notes = "根据url的id来指定更新用户信息")
-    @ApiImplicitParam(name = "user", value = "User实体", required = true, dataType = "User")
+    @ApiImplicitParam(name = "user", value = "User实体", required = false, dataType = "User")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public int update(User user) {
         return service.updateByPrimaryKeySelective(user);
