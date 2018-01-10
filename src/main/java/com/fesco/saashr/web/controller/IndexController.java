@@ -1,5 +1,6 @@
 package com.fesco.saashr.web.controller;
 
+import com.fesco.saashr.web.annotation.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController extends BaseController {
 
     @RequestMapping
+    @Log(type = "请求操作", description = "请求主页")
     public String index() {
         return "index";
     }
