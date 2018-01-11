@@ -1,8 +1,12 @@
-package com.fesco.saashr.web.util;
+package com.fesco.saashr.core.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.propertyeditors.PropertiesEditor;
 
+/**
+ * @author WangXingYu
+ * @date 2018-01-10
+ */
 public class DoubleEditor extends PropertiesEditor {
 
     @Override

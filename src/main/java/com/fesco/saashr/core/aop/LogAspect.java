@@ -1,19 +1,14 @@
-package com.fesco.saashr.web.aop;
+package com.fesco.saashr.core.aop;
 
-import com.fesco.saashr.web.annotation.Log;
-import com.fesco.saashr.web.common.SessionAttr;
-import com.fesco.saashr.web.model.User;
+import com.fesco.saashr.core.annotation.Log;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
@@ -36,41 +31,42 @@ public class LogAspect {
     /**
      * 前置通知
      *
-     * @param joinPoint 切点
+     * @param jp 切点
      */
     @Before("controllerAspect()")
-    public void doBefore(JoinPoint joinPoint) {
+    public void before(JoinPoint jp) {
         if (logger.isInfoEnabled()) {
-            logger.info("===========执行前置通知===========");
+            logger.info("[前置通知]");
         }
     }
 
     /**
      * 环绕通知
      *
-     * @param joinPoint 切点
+     * @param pjp 切点
      */
     @Around("controllerAspect()")
-    public void around(JoinPoint joinPoint) {
+    public Object around(ProceedingJoinPoint pjp) {
+        Object result = null;
         if (logger.isInfoEnabled()) {
-            logger.info("===========开始执行环绕通知===========");
+            logger.info("[开始环绕通知]");
         }
         long start = System.currentTimeMillis();
         try {
-            ((ProceedingJoinPoint) joinPoint).proceed();
+            result = pjp.proceed();
             long end = System.currentTimeMillis();
             if (logger.isInfoEnabled()) {
-                logger.info("===========结束执行环绕通知===========");
-                logger.info("===========用时:" + (end - start) + "秒===========");
+                logger.info("[结束环绕通知:用时:" + (end - start) + "ms]");
             }
         } catch (Throwable e) {
             long end = System.currentTimeMillis();
-            if (logger.isErrorEnabled()) {
-                logger.error("===========环绕通知异常===========");
-                logger.error("===========用时:" + (end - start) + "秒===========");
-                logger.error(e.getMessage());
+            if (logger.isInfoEnabled()) {
+                logger.info("[环绕通知异常:用时:" + (end - start) + "ms]");
+                logger.info(e.getMessage());
             }
+            return result;
         }
+        return result;
     }
 
     /**
@@ -81,14 +77,14 @@ public class LogAspect {
     @After("controllerAspect()")
     public void after(JoinPoint joinPoint) {
         if (logger.isInfoEnabled()) {
-            logger.info("===========执行后置通知===========");
+            logger.info("[后置通知]");
         }
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        HttpSession session = request.getSession();
+        //HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        //HttpSession session = request.getSession();
         //读取session中的用户
-        User user = (User) session.getAttribute(SessionAttr.Current_USER.getValue());
+        //User user = (User) session.getAttribute(SessionAttr.Current_USER.getValue());
         //请求的IP
-        String ip = request.getRemoteAddr();
+        //String ip = request.getRemoteAddr();
         try {
             String targetName = joinPoint.getTarget().getClass().getName();
             String methodName = joinPoint.getSignature().getName();
@@ -101,8 +97,11 @@ public class LogAspect {
                 if (method.getName().equals(methodName)) {
                     Class[] clazzs = method.getParameterTypes();
                     if (clazzs.length == arguments.length) {
-                        type = method.getAnnotation(Log.class).type();
-                        description = method.getAnnotation(Log.class).description();
+                        Annotation annotation = method.getAnnotation(Log.class);
+                        if (annotation != null) {
+                            type = method.getAnnotation(Log.class).type();
+                            description = method.getAnnotation(Log.class).description();
+                        }
                         break;
                     }
                 }
@@ -110,14 +109,26 @@ public class LogAspect {
             if (logger.isInfoEnabled()) {
                 logger.info("请求方法:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()") + "." + type);
                 logger.info("方法描述:" + description);
-                logger.info("请求人:" + user.getUsername());
-                logger.info("请求IP:" + ip);
+                logger.info("请求人:" + "user");
+                logger.info("请求IP:" + "localhost");
             }
-            // TODO: 2018-01-10 存档到数据库
         } catch (Exception e) {
-            if (logger.isErrorEnabled()) {
-                logger.error("error:" + e.getMessage());
+            if (logger.isInfoEnabled()) {
+                logger.info(e.getMessage());
             }
+        }
+    }
+
+    /**
+     * 异常通知
+     *
+     * @param jp 切点
+     */
+    @AfterThrowing(pointcut = "controllerAspect()", throwing = "e")
+    public void afterThrowing(JoinPoint jp, ArithmeticException e) {
+        if (logger.isInfoEnabled()) {
+            logger.info("[异常通知]");
+            logger.info(e.getMessage());
         }
     }
 }

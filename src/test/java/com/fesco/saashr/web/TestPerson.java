@@ -1,4 +1,4 @@
-package com.fesco.saashr.web.util;
+package com.fesco.saashr.web;
 
 import java.util.List;
 

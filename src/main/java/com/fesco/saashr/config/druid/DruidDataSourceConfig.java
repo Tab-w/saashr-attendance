@@ -24,16 +24,23 @@ public class DruidDataSourceConfig {
     @ConfigurationProperties("spring.druid.datasource")
     public DruidDataSource dataSource() throws Exception {
         DruidDataSource dataSource = new DruidDataSource();
+        //驱动类
         dataSource.setDriverClassName(druidSettings.getDriverClassName());
+        //基本属性 url、user、password
         dataSource.setUrl(druidSettings.getUrl());
         dataSource.setUsername(druidSettings.getUsername());
         dataSource.setPassword(druidSettings.getPassword());
+        //初始化大小、最小、最大
         dataSource.setInitialSize(druidSettings.getInitialSize());
         dataSource.setMinIdle(druidSettings.getMinIdle());
         dataSource.setMaxActive(druidSettings.getMaxActive());
+        //获取连接等待超时的时间
         dataSource.setMaxWait(druidSettings.getMaxWait());
+        //间隔多久才进行一次检测，检测需要关闭的空闲连接
         dataSource.setTimeBetweenEvictionRunsMillis(druidSettings.getTimeBetweenEvictionRunsMillis());
+        //连接在池中最小生存的时间
         dataSource.setMinEvictableIdleTimeMillis(druidSettings.getMinEvictableIdleTimeMillis());
+
         String validationQuery = druidSettings.getValidationQuery();
         if (validationQuery != null && !"".equals(validationQuery)) {
             dataSource.setValidationQuery(validationQuery);
@@ -41,6 +48,7 @@ public class DruidDataSourceConfig {
         dataSource.setTestWhileIdle(druidSettings.isTestWhileIdle());
         dataSource.setTestOnBorrow(druidSettings.isTestOnBorrow());
         dataSource.setTestOnReturn(druidSettings.isTestOnReturn());
+
         if (druidSettings.isPoolPreparedStatements()) {
             dataSource.setMaxPoolPreparedStatementPerConnectionSize(druidSettings.getMaxPoolPreparedStatementPerConnectionSize());
         }

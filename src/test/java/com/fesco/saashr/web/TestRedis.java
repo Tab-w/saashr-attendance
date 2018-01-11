@@ -1,6 +1,6 @@
-package com.fesco.saashr.web.util;
+package com.fesco.saashr.web;
 
-import com.fesco.saashr.web.common.RedisComponent;
+import com.fesco.saashr.core.common.RedisComponent;
 import com.fesco.saashr.web.model.User;
 import org.junit.Assert;
 import org.junit.Test;

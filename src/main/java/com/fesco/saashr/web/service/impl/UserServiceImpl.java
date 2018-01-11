@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @date 2018-01-02
  */
 @Service
-@Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl implements BaseService<User> {
     @Autowired
     private UserMapper mapper;

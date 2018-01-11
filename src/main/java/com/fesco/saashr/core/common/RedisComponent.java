@@ -1,4 +1,4 @@
-package com.fesco.saashr.web.common;
+package com.fesco.saashr.core.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

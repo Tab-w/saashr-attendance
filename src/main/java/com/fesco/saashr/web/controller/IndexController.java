@@ -1,10 +1,7 @@
 package com.fesco.saashr.web.controller;
 
-import com.fesco.saashr.web.annotation.Log;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.fesco.saashr.core.annotation.Log;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

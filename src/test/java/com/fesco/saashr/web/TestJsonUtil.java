@@ -1,6 +1,7 @@
-package com.fesco.saashr.web.util;
+package com.fesco.saashr.web;
 
 
+import com.fesco.saashr.core.util.JsonUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

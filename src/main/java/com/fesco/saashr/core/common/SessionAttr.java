@@ -1,4 +1,4 @@
-package com.fesco.saashr.web.common;
+package com.fesco.saashr.core.common;
 
 /**
  * @author WangXingYu

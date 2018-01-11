@@ -1,4 +1,4 @@
-package com.fesco.saashr.web.util;
+package com.fesco.saashr.core.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

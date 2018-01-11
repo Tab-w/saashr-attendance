@@ -1,4 +1,4 @@
-package com.fesco.saashr.web.util;
+package com.fesco.saashr.core.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.propertyeditors.PropertiesEditor;
@@ -6,6 +6,10 @@ import org.springframework.beans.propertyeditors.PropertiesEditor;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+/**
+ * @author WangXingYu
+ * @date 2018-01-10
+ */
 public class DateEditor extends PropertiesEditor {
 
     /**
