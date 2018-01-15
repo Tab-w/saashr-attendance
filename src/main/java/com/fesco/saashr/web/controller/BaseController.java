@@ -44,6 +44,7 @@ public class BaseController {
         return "redirect:/500";
     }
 
+    @ApiIgnore
     @RequestMapping("/api")
     public ModelAndView api() {
         return new ModelAndView("redirect:/swagger-ui.html");

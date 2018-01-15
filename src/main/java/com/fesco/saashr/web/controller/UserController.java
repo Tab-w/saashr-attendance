@@ -23,7 +23,7 @@ public class UserController extends BaseController {
     @Autowired
     private UserServiceImpl service;
 
-    @ApiOperation(value = "查询单条用户信息", notes = "根据url的id来指定查询用户信息")
+    @ApiOperation(value = "查询单条用户信息", notes = "根据id来指定查询用户信息")
     @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "Integer")
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public User get(int id) {
@@ -44,14 +44,14 @@ public class UserController extends BaseController {
         return service.insertSelective(user);
     }
 
-    @ApiOperation(value = "删除用户信息", notes = "根据url的id来指定删除用户信息")
+    @ApiOperation(value = "删除用户信息", notes = "根据id来指定删除用户信息")
     @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "Integer")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public int delete(@RequestParam int id) {
         return service.deleteByPrimaryKey(id);
     }
 
-    @ApiOperation(value = "更新用户信息", notes = "根据url的id来指定更新用户信息")
+    @ApiOperation(value = "更新用户信息", notes = "根据id来指定更新用户信息")
     @ApiImplicitParam(name = "user", value = "User实体", dataType = "User")
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public int update(User user) {
