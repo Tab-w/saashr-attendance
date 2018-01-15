@@ -52,6 +52,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
+            <exclusions>
+                <!-- 去除logback的依赖 -->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -210,15 +217,16 @@
                         <version>1.3.5</version>
                     </dependency>
                 </dependencies>
-                <executions>
-                    <execution>
-                        <id>Generate MyBatis Artifacts</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <!--在compile 阶段之前运行-->
+                <!--<executions>-->
+                <!--<execution>-->
+                <!--<id>Generate MyBatis Artifacts</id>-->
+                <!--<phase>package</phase>-->
+                <!--<goals>-->
+                <!--<goal>generate</goal>-->
+                <!--</goals>-->
+                <!--</execution>-->
+                <!--</executions>-->
                 <configuration>
                     <!--允许移动生成的文件 -->
                     <verbose>true</verbose>

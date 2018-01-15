@@ -15,7 +15,7 @@ import java.util.Properties;
  * @date: 2018-01-01
  */
 @Configuration
-public class DruidConfiguration {
+public class DruidConfig {
 
     @Autowired
     private Environment environment;
