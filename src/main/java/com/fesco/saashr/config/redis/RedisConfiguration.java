@@ -1,7 +1,6 @@
 package com.fesco.saashr.config.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -16,10 +15,14 @@ import java.io.Serializable;
  * @date: 2018-01-03
  */
 @Configuration
-public class RedisConfig {
+public class RedisConfiguration {
+
+    private final Environment environment;
 
     @Autowired
-    private Environment environment;
+    public RedisConfiguration(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() {

@@ -34,6 +34,7 @@ public class ControllerLogAspect {
         }
         long start = System.currentTimeMillis();
         try {
+            //获取信息
             getInfo(pjp);
             result = pjp.proceed();
             long end = System.currentTimeMillis();
@@ -53,12 +54,12 @@ public class ControllerLogAspect {
 
     private void getInfo(ProceedingJoinPoint pjp) {
         try {
-            //HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-            //HttpSession session = request.getSession();
-            //读取session中的用户
-            //User user = (User) session.getAttribute(SessionAttr.Current_USER.getValue());
-            //请求的IP
-            //String ip = request.getRemoteAddr();
+//            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+//            HttpSession session = request.getSession();
+//            //读取session中的用户
+//            User user = (User) session.getAttribute(SessionAttr.Current_USER.getValue());
+//            //请求的IP
+//            String ip = request.getRemoteAddr();
             String targetName = pjp.getTarget().getClass().getName();
             String methodName = pjp.getSignature().getName();
             Object[] arguments = pjp.getArgs();

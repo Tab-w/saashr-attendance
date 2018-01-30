@@ -1,6 +1,6 @@
 package com.fesco.saashr.config.mybatis;
 
-import com.fesco.saashr.config.druid.DruidConfig;
+import com.fesco.saashr.config.druid.DruidConfiguration;
 import com.github.pagehelper.PageHelper;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +13,8 @@ import java.util.Properties;
  * @date: 2018-01-01
  */
 @Configuration
-@AutoConfigureAfter(DruidConfig.class)
-public class MybatisConfig {
+@AutoConfigureAfter(DruidConfiguration.class)
+public class MybatisConfiguration {
     @Bean
     public PageHelper pageHelper() {
         PageHelper pageHelper = new PageHelper();

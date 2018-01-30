@@ -5,6 +5,7 @@ package com.fesco.saashr.core.common;
  * @date 2018-01-10
  */
 public enum SessionAttr {
+
     Current_USER("currentUser", "当前用户");
 
     SessionAttr(String value, String description) {
