@@ -13,7 +13,7 @@ import java.util.Properties;
  * @date: 2018-01-01
  */
 @Configuration
-public class DruidConfig {
+public class DruidConfiguration {
 
     private final Environment environment;
 
